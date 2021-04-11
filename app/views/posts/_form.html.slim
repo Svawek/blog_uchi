@@ -1,0 +1,11 @@
+= simple_form_for @post, html: { class: 'form' } do |f|
+  .form-row
+    .form-group.col
+      = f.input :title
+  .form-row
+    .form-group.col-12
+      = f.input :text, as: :text
+  .col-12
+    .form-group
+      = link_to 'Отмена', posts_path, class: 'btn btn-danger mr-3'
+      = f.button :submit, 'Добавить пост', class: 'btn btn-info'

@@ -1,0 +1,9 @@
+.row
+  p = link_to 'Добавить пост', new_post_path, class: 'btn btn-link'
+
+- @posts.each do |post|
+  .row
+    .col-12
+      h2 = link_to "#{post.title}", post_path(post)
+    .col-12
+      p = post.text

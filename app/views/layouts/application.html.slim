@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title = BlogUchi
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    h1.text-center = link_to 'Test Blog', posts_path
+    hr.align-content-center width='1000' color='green'
+
+    p.alert-success = notice
+    p.alert-danger = alert
+    .container
+      = yield

@@ -1,0 +1,29 @@
+.row
+  = link_to 'Назад', posts_path
+
+.row.mt-3
+  .col-12
+    h2 = @post.title
+  .col-12
+    p = @post.text
+  .col
+    = link_to 'Редактировать пост', edit_post_path(@post), class: 'btn btn-info form-inline-link mr-3'
+    = link_to 'Удалить пост', post_path(@post), method: :delete, data: {confirm: t('Удалить пост?')}, class: 'btn btn-danger'
+
+hr.align-content-center width='1000' color='green'
+
+.row
+  h4 = 'Комментарии к посту'
+  - @comments.each do |comment|
+    .col-12.mb-3
+      p = comment.text
+      small.text-muted = "Автор #{comment.user.name}. Дата: #{comment.created_at.strftime("%H:%M %d.%m.%Y")}"
+
+= simple_form_for [@post, @comment], html: { class: 'form' } do |f|
+  .form-row
+    h4 = 'Добавить комментарий:'
+    .form-group.col-12
+      = f.input :text, as: :text, input_html: { col: 15, row: 10 }
+  .col-12
+    .form-group
+      = f.button :submit, 'Добавить комментарий', class: 'btn btn-info'
